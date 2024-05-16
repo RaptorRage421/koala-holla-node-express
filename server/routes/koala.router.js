@@ -55,12 +55,19 @@ console.log("is ready?" , isReady)
 console.log("koala id", koalaId)
     let queryText = ''
 
-    if (isReady == true){
+    if (isReady === true){
         queryText = `
         UPDATE "koala" SET "ready_for_transfer"=true
         WHERE "id"=$1;
         `;
-    } else {
+    } 
+    else if(isReady === false){
+        queryText = `
+        UPDATE "koala" SET "ready_for_transfer"=false
+        WHERE "id"=$1;
+        `;
+    }    
+    else {
         res.sendStatus(500)
         console.error('Trouble marking as ready')
     }
