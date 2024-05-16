@@ -9,7 +9,7 @@ function getKoalas(){
   })
   .then((response) => {
     console.log('get Koalas is running...', response.data)
-    saveKoala(response.data)
+    renderKoala(response.data)
   })
   .catch((err) => {
     console.error('Error in /GET koalas', err)
@@ -19,9 +19,23 @@ function getKoalas(){
 
 
 getKoalas();
+function addKoala(koalaToAdd){
+  axios({
+    method: 'POST',
+    url: '/koalas',
+    data: koalaToAdd
+  })
+  .then((response) => {
+    console.log('addKoala() is working...', response.data)
+    getKoalas()
+  })
+  .catch((err) => {
+    console.error('Error in POST', err)
+      alert('Unable to add Koala at this time. Please try again later.');
+  })
+  }
 
-
-function submitBook(event) {
+function submitKoala(event) {
   event.preventDefault();
   let warningText = document.querySelector('#required_field')
   console.log('Submit button clicked.');
@@ -30,12 +44,12 @@ function submitBook(event) {
   koala.name = document.getElementById('nameIn').value;
   koala.age = document.getElementById('ageIn').value;
   koala.favorite_color = document.getElementById('colorIn').value;
-  koala.ready_for_transfer = document.getElementById('readyForTrainsferIn').value;
+  koala.ready_for_transfer = document.getElementById('readyForTransferIn').value;
   koala.notes = document.getElementById('notesIn').value;
   console.log('koala object: ', koala)
     // document.getElementById('author').value = ''
     // document.getElementById('title').value = ''
-    addKoalas(koala)
+    addKoala(koala)
     
 
 }
@@ -55,15 +69,16 @@ axios({
 })
 }
 
-function saveKoala(koalas) {
+function renderKoala(koalas) {
   const koalaZoo = document.getElementById('viewKoalas')
-  viewKoalas.innerHTML = '';
+  koalaZoo.innerHTML = '';
 
   for (let i = 0; i < koalas.length; i += 1) {
     let koala = koalas[i];
+    console.log('koala is ', koala)
   
 
-    viewKoalas.innerHTML += `
+    koalaZoo.innerHTML += `
       <tr>
       <td>${koala.name}</td>  
       <td>${koala.age}</td>
