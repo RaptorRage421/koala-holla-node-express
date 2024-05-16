@@ -27,13 +27,14 @@ koalaRouter.get('/', (req, res)=>{
 // POST
 koalaRouter.post('/', (req, res)=>{
     let newKoala = req.body
-    console.log('Adding koala', newKoala)
+    let koalaArray = [newKoala.name, newKoala.age, newKoala.favorite_color, newKoala.ready_for_transfer, newKoala.notes]
+    console.log('Adding koala', koalaArray)
 
     let queryText = `
-    INSERT INTO "koala" ("name", "favorite_color", "age", "ready_for_transfer", "notes")
+    INSERT INTO "koala" ("name", "age", "favorite_color", "ready_for_transfer", "notes")
     VALUES ($1, $2, $3, $4, $5);
     `
-    pool.query(queryText, [newKoala])
+    pool.query(queryText, koalaArray)
         .then((result)=>{
             res.sendStatus(201)
         })
