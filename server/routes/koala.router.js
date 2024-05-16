@@ -49,8 +49,10 @@ koalaRouter.post('/', (req, res)=>{
 // PUT
 koalaRouter.put('/ready/:id', (req, res)=>{
     let koalaId = req.params.id
-    let isReady = req.body.isReady
-
+    let isReady = req.body.ready_for_transfer
+    console.log("req.body", req.body)
+console.log("is ready?" , isReady)
+console.log("koala id", koalaId)
     let queryText = ''
 
     if (isReady === true){
@@ -58,7 +60,14 @@ koalaRouter.put('/ready/:id', (req, res)=>{
         UPDATE "koala" SET "ready_for_transfer"=true
         WHERE "id"=$1;
         `;
-    } else {
+    } 
+    else if(isReady === false){
+        queryText = `
+        UPDATE "koala" SET "ready_for_transfer"=false
+        WHERE "id"=$1;
+        `;
+    }    
+    else {
         res.sendStatus(500)
         console.error('Trouble marking as ready')
     }
