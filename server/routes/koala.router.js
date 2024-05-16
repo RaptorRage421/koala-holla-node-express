@@ -49,11 +49,13 @@ koalaRouter.post('/', (req, res)=>{
 // PUT
 koalaRouter.put('/ready/:id', (req, res)=>{
     let koalaId = req.params.id
-    let isReady = req.body.isReady
-
+    let isReady = req.body.ready_for_transfer
+    console.log("req.body", req.body)
+console.log("is ready?" , isReady)
+console.log("koala id", koalaId)
     let queryText = ''
 
-    if (isReady === true){
+    if (isReady == true){
         queryText = `
         UPDATE "koala" SET "ready_for_transfer"=true
         WHERE "id"=$1;

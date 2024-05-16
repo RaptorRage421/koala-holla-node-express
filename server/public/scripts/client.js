@@ -77,7 +77,7 @@ function renderKoala(koalas) {
     let koala = koalas[i];
     console.log('koala is ', koala)
   
-
+if (koala.ready_for_transfer === true){
     koalaZoo.innerHTML += `
       <tr>
       <td>${koala.name}</td>  
@@ -85,16 +85,51 @@ function renderKoala(koalas) {
       <td>${koala.favorite_color}</td>
       <td>${koala.ready_for_transfer}</td>
       <td>${koala.notes}</td>
+      <td></td>
       <td><button class="delete_button" onClick="deleteKoala(${koala.id})">DELETE🗑️</button></td>
       
         
       </tr>
     `;
+}
+else {
+  koalaZoo.innerHTML += `
+      <tr>
+      <td>${koala.name}</td>  
+      <td>${koala.age}</td>
+      <td>${koala.favorite_color}</td>
+      <td>${koala.ready_for_transfer}</td>
+      <td>${koala.notes}</td>
+      <td><button onClick="markReady(${koala.id},true)">Ready for Transfer</button></td>
+      <td><button class="delete_button" onClick="deleteKoala(${koala.id})">DELETE🗑️</button></td>
+      
+        
+      </tr>
+    `;
+}
 
   }
 }
 
-function deleteKoala(bookId) {
+function markReady(koalaId, isReady){
+  console.log("Changing status of...", koalaId);
+  axios({
+   method: "PUT",
+   url: "/koalas/ready/" + koalaId,
+   data: {ready_for_transfer: isReady}
+  })
+  .then((response) => {
+   getKoalas()
+  })
+  .catch((error) => {
+   console.log('Error', error);
+   alert('Something went wrong');
+  });
+  }
+ 
+
+
+function deleteKoala(koalaId) {
 
   axios({
     method: "DELETE",
