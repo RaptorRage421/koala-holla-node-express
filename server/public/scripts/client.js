@@ -27,27 +27,23 @@ function submitBook(event) {
   console.log('Submit button clicked.');
   let koala = {};
  
-  koala.name = document.getElementById('author').value;
-  koala.name = document.getElementById('author').value;
-  koala.name = document.getElementById('author').value;
-  koala.name = document.getElementById('author').value;
-  book.title = document.getElementById('title').value;
-  if (book.author.length === 0 || book.title.length === 0) {
-    warningText.innerHTML = `<span id="warning">Inputs are Required!</span>`
-  }
-  else {
-    document.getElementById('author').value = ''
-    document.getElementById('title').value = ''
+  koala.name = document.getElementById('nameIn').value;
+  koala.age = document.getElementById('ageIn').value;
+  koala.favorite_color = document.getElementById('colorIn').value;
+  koala.ready_for_transfer = document.getElementById('readyForTrainsferIn').value;
+  koala.notes = document.getElementById('notesIn').value;
+  console.log('koala object: ', koala)
+    // document.getElementById('author').value = ''
+    // document.getElementById('title').value = ''
     addKoalas(koala)
-    warningText.innerHTML = ''
-  }
+    
 
 }
 function addKoala(koalaToAdd){
 axios({
   method: 'POST',
   url: '/koalas',
-  data: {koalaToAdd}
+  data: koalaToAdd
 })
 .then((response) => {
   console.log('addKoala() is working...', response.data)
