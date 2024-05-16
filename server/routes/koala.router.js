@@ -27,13 +27,16 @@ koalaRouter.get('/', (req, res)=>{
 // POST
 koalaRouter.post('/', (req, res)=>{
     let newKoala = req.body
-    console.log('Adding koala', newKoala)
+    let koalaArray = [newKoala.name, newKoala.age, newKoala.favorite_color, newKoala.ready_for_transfer, newKoala.notes]
+    console.log('Adding koala', koalaArray)
 
     let queryText = `
+
     INSERT INTO "koala" ("name", "age","favorite_color",  "ready_for_transfer", "notes")
+
     VALUES ($1, $2, $3, $4, $5);
     `
-    pool.query(queryText, [newKoala])
+    pool.query(queryText, koalaArray)
         .then((result)=>{
             res.sendStatus(201)
         })
@@ -46,11 +49,13 @@ koalaRouter.post('/', (req, res)=>{
 // PUT
 koalaRouter.put('/ready/:id', (req, res)=>{
     let koalaId = req.params.id
-    let isReady = req.body.isReady
-
+    let isReady = req.body.ready_for_transfer
+    console.log("req.body", req.body)
+console.log("is ready?" , isReady)
+console.log("koala id", koalaId)
     let queryText = ''
 
-    if (isReady === true){
+    if (isReady == true){
         queryText = `
         UPDATE "koala" SET "ready_for_transfer"=true
         WHERE "id"=$1;
