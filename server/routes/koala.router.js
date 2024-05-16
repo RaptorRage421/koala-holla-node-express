@@ -12,7 +12,7 @@ const pool = new pg.Pool({
 
 // GET
 koalaRouter.get('/', (req, res)=>{
-    let queryText = `SELECT * FROM "koalas" ORDER BY "name";`
+    let queryText = `SELECT * FROM "koala" ORDER BY "name";`
 
     pool.query(queryText)
         .then((result)=>{
@@ -30,16 +30,44 @@ koalaRouter.post('/', (req, res)=>{
     console.log('Adding koala', newKoala)
 
     let queryText = `
-    INSERT INTO "koalas" ("name", "favorite_color", "age", "ready_to_transfer", "notes")
+    INSERT INTO "koala" ("name", "favorite_color", "age", "ready_for_transfer", "notes")
     VALUES ($1, $2, $3, $4, $5);
     `
     pool.query(queryText, [newKoala])
-        .then
+        .then((result)=>{
+            res.sendStatus(201)
+        })
+        .catch((err)=>{
+            console.error('Error adding koala', err)
+            res.sendStatus(500)
+        })
 })
 
 // PUT
-koalaRouter.post('/', ()=>{
+koalaRouter.put('/', (req, res)=>{
+    let koalaId = req.params.id
+    let isReady = req.body.isReady
 
+    let queryText = ''
+
+    if (isReady === true){
+        queryText = `
+        UPDATE "koala" SET "ready_for_transfer"=true
+        WHERE "id"=$1
+        `;
+    } else {
+        res.sendStatus(500)
+        console.error('Trouble marking as ready')
+    }
+
+    pool.query(queryText, [koalaId])
+        .then(()=>{
+            res.sendStatus(204)
+        })
+        .catch((err)=>{
+            console.log(`Error making query ${queryText}`, err)
+            res.send(500)
+        })
 })
 
 // DELETE
