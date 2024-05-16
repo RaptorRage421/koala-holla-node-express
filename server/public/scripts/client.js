@@ -26,6 +26,16 @@ getKoalas();
 
 function addKoala(koalaToAdd){
 axios({
-  method: 'POST'
+  method: 'POST',
+  url: '/koalas',
+  data: koalaToAdd
+})
+.then((response) => {
+  console.log('addKoala() is working...', response.data)
+  getKoalas()
+})
+.catch((err) => {
+  console.error('Error in POST', err)
+    alert('Unable to add Koala at this time. Please try again later.');
 })
 }
