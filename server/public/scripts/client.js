@@ -16,14 +16,29 @@ function getKoalas(){
   })
 } // end getKoalas
 
-function saveKoala(){
-  console.log( 'in saveKoala' );
-  // axios call to server to get koalas
- 
-}
+
 
 getKoalas();
 
+
+function submitBook(event) {
+  event.preventDefault();
+  let warningText = document.querySelector('#required_field')
+  console.log('Submit button clicked.');
+  let koala = {};
+ 
+  koala.name = document.getElementById('nameIn').value;
+  koala.age = document.getElementById('ageIn').value;
+  koala.favorite_color = document.getElementById('colorIn').value;
+  koala.ready_for_transfer = document.getElementById('readyForTrainsferIn').value;
+  koala.notes = document.getElementById('notesIn').value;
+  console.log('koala object: ', koala)
+    // document.getElementById('author').value = ''
+    // document.getElementById('title').value = ''
+    addKoalas(koala)
+    
+
+}
 function addKoala(koalaToAdd){
 axios({
   method: 'POST',
@@ -40,7 +55,7 @@ axios({
 })
 }
 
-function saveKoala(koala) {
+function saveKoala(koalas) {
   const koalaZoo = document.getElementById('viewKoalas')
   viewKoalas.innerHTML = '';
 
