@@ -69,6 +69,7 @@ function saveKoala(koalas) {
       <td>${koala.age}</td>
       <td>${koala.favorite_color}</td>
       <td>${koala.ready_for_transfer}</td>
+      <td>${koala.notes}</td>
       <td><button class="delete_button" onClick="deleteKoala(${koala.id})">DELETE🗑️</button></td>
       
         
@@ -78,7 +79,7 @@ function saveKoala(koalas) {
   }
 }
 
-function deleteKoala(bookId) {
+function deleteKoala(koalaId) {
 
   axios({
     method: "DELETE",
