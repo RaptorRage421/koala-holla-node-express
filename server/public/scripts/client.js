@@ -16,19 +16,38 @@ function getKoalas(){
   })
 } // end getKoalas
 
-function saveKoala(){
-  console.log( 'in saveKoala' );
-  // axios call to server to get koalas
- 
-}
+
 
 getKoalas();
 
+
+function submitBook(event) {
+  event.preventDefault();
+  let warningText = document.querySelector('#required_field')
+  console.log('Submit button clicked.');
+  let koala = {};
+ 
+  koala.name = document.getElementById('author').value;
+  koala.name = document.getElementById('author').value;
+  koala.name = document.getElementById('author').value;
+  koala.name = document.getElementById('author').value;
+  book.title = document.getElementById('title').value;
+  if (book.author.length === 0 || book.title.length === 0) {
+    warningText.innerHTML = `<span id="warning">Inputs are Required!</span>`
+  }
+  else {
+    document.getElementById('author').value = ''
+    document.getElementById('title').value = ''
+    addKoalas(koala)
+    warningText.innerHTML = ''
+  }
+
+}
 function addKoala(koalaToAdd){
 axios({
   method: 'POST',
   url: '/koalas',
-  data: koalaToAdd
+  data: {koalaToAdd}
 })
 .then((response) => {
   console.log('addKoala() is working...', response.data)
@@ -40,7 +59,7 @@ axios({
 })
 }
 
-function saveKoala(koala) {
+function saveKoala(koalas) {
   const koalaZoo = document.getElementById('viewKoalas')
   viewKoalas.innerHTML = '';
 
