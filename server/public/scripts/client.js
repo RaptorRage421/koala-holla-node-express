@@ -39,3 +39,41 @@ axios({
     alert('Unable to add Koala at this time. Please try again later.');
 })
 }
+
+function saveKoala(koala) {
+  const koalaZoo = document.getElementById('viewKoalas')
+  viewKoalas.innerHTML = '';
+
+  for (let i = 0; i < koalas.length; i += 1) {
+    let koala = koalas[i];
+  
+
+    viewKoalas.innerHTML += `
+      <tr>
+      <td>${koala.name}</td>  
+      <td>${koala.age}</td>
+      <td>${koala.favorite_color}</td>
+      <td>${koala.ready_for_transfer}</td>
+      <td><button class="delete_button" onClick="deleteKoala(${koala.id})">DELETE🗑️</button></td>
+      
+        
+      </tr>
+    `;
+
+  }
+}
+
+function deleteKoala(bookId) {
+
+  axios({
+    method: "DELETE",
+    url: `/koalas/${koalaId}`
+  })
+    .then((response) => {
+      getKoalas();
+    })
+    .catch((error) => {
+      console.log('Error', error);
+      alert('Something went wrong');
+    });
+}
