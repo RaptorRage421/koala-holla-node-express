@@ -44,7 +44,7 @@ koalaRouter.post('/', (req, res)=>{
 })
 
 // PUT
-koalaRouter.put('/', (req, res)=>{
+koalaRouter.put('/ready/:id', (req, res)=>{
     let koalaId = req.params.id
     let isReady = req.body.isReady
 
@@ -53,7 +53,7 @@ koalaRouter.put('/', (req, res)=>{
     if (isReady === true){
         queryText = `
         UPDATE "koala" SET "ready_for_transfer"=true
-        WHERE "id"=$1
+        WHERE "id"=$1;
         `;
     } else {
         res.sendStatus(500)
@@ -71,5 +71,22 @@ koalaRouter.put('/', (req, res)=>{
 })
 
 // DELETE
+
+koalaRouter.delete('/:id', (req,res)=>{
+    console.log("req params", req.params)
+
+    let koalaId = req.params.id
+    let queryText = `
+    DELETE FROM "koala" WHERE "id"=$1;
+    `
+    pool.query(queryText, [koalaId])
+        .then(()=>{
+            res.sendStatus(200)
+        })
+        .catch((err)=>{
+            console.error(`Error making query ${queryText}`, err)
+            res.sendStatus(500)
+        })
+})
 
 module.exports = koalaRouter;
