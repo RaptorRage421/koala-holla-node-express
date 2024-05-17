@@ -156,6 +156,26 @@ axios({
  }
 
  
+ function editColor(koalaId, incColor){
+  if (incColor.length === 0){
+    return
+  }
+axios({
+  method: "PUT",
+  url: "/koalas/color/" + koalaId,
+  data: {favorite_color: incColor}
+})
+
+.then((response) => {
+  console.log('incoming color', incColor)
+  getKoalas()
+  document.getElementById('colorIn').value = ''
+ })
+ .catch((error) => {
+  console.log('Error', error);
+  alert('Something went wrong');
+ });
+ }
 
 
 function deleteKoala(koalaId) {
