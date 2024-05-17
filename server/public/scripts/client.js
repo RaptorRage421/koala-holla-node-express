@@ -1,14 +1,14 @@
 console.log( 'js' );
 
 function getKoalas(){
-  console.log( 'in getKoalas' );
+  // console.log( 'in getKoalas' );
   // axios call to server to get koalas
   axios({
       method: 'GET',
       url: '/koalas'
   })
   .then((response) => {
-    console.log('get Koalas is running...', response.data)
+    // console.log('get Koalas is running...', response.data)
     renderKoala(response.data)
   })
   .catch((err) => {
@@ -26,7 +26,7 @@ function addKoala(koalaToAdd){
     data: koalaToAdd
   })
   .then((response) => {
-    console.log('addKoala() is working...', response.data)
+    // console.log('addKoala() is working...', response.data)
     getKoalas()
   })
   .catch((err) => {
@@ -46,7 +46,7 @@ function submitKoala(event) {
   koala.favorite_color = document.getElementById('colorIn').value;
   koala.ready_for_transfer = document.getElementById('readyForTransferIn').value;
   koala.notes = document.getElementById('notesIn').value;
-  console.log('koala object: ', koala)
+  // console.log('koala object: ', koala)
   if (koala.age.length === 0 || koala.name.length === 0 || koala.favorite_color.length === 0 || koala.ready_for_transfer.length === 0 || koala.notes.length === 0){
     return
   }
@@ -82,7 +82,7 @@ function renderKoala(koalas) {
 
   for (let i = 0; i < koalas.length; i += 1) {
     let koala = koalas[i];
-    console.log('koala is ', koala)
+    // console.log('koala is ', koala)
   
 if (koala.ready_for_transfer === true){
     koalaZoo.innerHTML += `
@@ -119,7 +119,7 @@ else {
 }
 
 function markReady(koalaId, isReady){
-  console.log("Changing status of...", koalaId);
+  console.log("Changing status of...", koalaId, isReady);
   axios({
    method: "PUT",
    url: "/koalas/ready/" + koalaId,
@@ -145,7 +145,7 @@ axios({
 })
 
 .then((response) => {
-  console.log('incoming notes', incNotes)
+  console.log('Updating Koala: ',koalaId+ ": "+ incNotes)
   getKoalas()
   document.getElementById('notesIn').value = ''
  })
@@ -167,7 +167,7 @@ axios({
 })
 
 .then((response) => {
-  console.log('incoming color', incColor)
+  console.log('Updating Koala: ',koalaId+ ": "+ incColor)
   getKoalas()
   document.getElementById('colorIn').value = ''
  })
@@ -185,6 +185,7 @@ function deleteKoala(koalaId) {
     url: `/koalas/${koalaId}`
   })
     .then((response) => {
+      console.log('Deleting Koala: ',koalaId)
       getKoalas();
     })
     .catch((error) => {

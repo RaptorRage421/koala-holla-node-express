@@ -28,7 +28,7 @@ koalaRouter.get('/', (req, res)=>{
 koalaRouter.post('/', (req, res)=>{
     let newKoala = req.body
     let koalaArray = [newKoala.name, newKoala.age, newKoala.favorite_color, newKoala.ready_for_transfer, newKoala.notes]
-    console.log('Adding koala', koalaArray)
+    // console.log('Adding koala', koalaArray)
 
     let queryText = `
 
@@ -50,9 +50,9 @@ koalaRouter.post('/', (req, res)=>{
 koalaRouter.put('/ready/:id', (req, res)=>{
     let koalaId = req.params.id
     let isReady = req.body.ready_for_transfer
-    console.log("req.body", req.body)
-console.log("is ready?" , isReady)
-console.log("koala id", koalaId)
+    // console.log("req.body", req.body)
+// console.log("is ready?" , isReady)
+// console.log("koala id", koalaId)
     let queryText = ''
 
     if (isReady === true){
