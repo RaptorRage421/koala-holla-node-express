@@ -82,6 +82,32 @@ console.log("koala id", koalaId)
         })
 })
 
+
+koalaRouter.put('/notes/:id', (req, res)=>{
+    let koalaId = req.params.id
+    let incNotes = req.body.notes
+    console.log("req.body", req.body)
+console.log("notes." , incNotes)
+console.log("koala id", koalaId)
+    let queryText = ''
+
+    
+        queryText = `
+        UPDATE "koala" SET "notes"=$2
+        WHERE "id"=$1;
+        `;
+    
+    
+    pool.query(queryText, [koalaId,incNotes])
+        .then(()=>{
+            res.sendStatus(204)
+        })
+        .catch((err)=>{
+            console.log(`Error making query ${queryText}`, err)
+            res.send(500)
+        })
+})
+
 // DELETE
 
 koalaRouter.delete('/:id', (req,res)=>{
