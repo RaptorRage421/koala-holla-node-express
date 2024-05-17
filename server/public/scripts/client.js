@@ -92,7 +92,7 @@ if (koala.ready_for_transfer === true){
       <td>${koala.favorite_color}</td>
       <td class="ready">✅&nbsp;&nbsp;&nbsp;&nbsp;  Ready! &nbsp;&nbsp;&nbsp;&nbsp; ✅</td>
       <td>${koala.notes}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editNotes(${koala.id},document.getElementById('notesIn').value)">Edit</button></td>
-      <td><button id="not_ready" class="not_ready" onClick="markReady(${koala.id},false)">Not Ready Anymore</button> </td>
+      <td><button id="not_ready" class="not_ready" onClick="markReady(${koala.id},false)">Not Ready</button> </td>
       <td><button class="delete_button" onClick="deleteKoala(${koala.id})">Delete</button></td>
       
         
