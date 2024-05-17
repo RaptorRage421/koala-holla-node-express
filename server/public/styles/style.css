@@ -1,0 +1,156 @@
+button {
+    border-radius: .5em;
+    padding: 3px;
+    box-shadow:-5px 2px purple;
+}
+button:hover {
+    box-shadow: -3px 2px goldenrod;
+}
+/* GLOBAL TYPOGRAPHY */
+body {
+    background-color: #dcdcdc;
+    font-family: 'Roboto', sans-serif;
+    color: #313131;
+    font-size: 1.25em;
+    min-height: 100vh;
+    margin: auto;
+  }
+  
+    
+  /* FLEXBOX LAYOUT */
+  html, body {
+    min-height: 90vh;
+    margin: auto;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  header {
+   background-color: #574e4e;
+    height: 2em;
+   justify-content: space-between;
+    
+    
+    font-size: 25px;
+  
+    font-weight: 100;
+    color: rgb(211, 153, 250)  ;
+  }
+  main {
+    display: flexbox;
+    flex:auto;
+    max-width: 80%;
+    margin: auto;
+  }
+  footer {
+    height: 8em;
+    background-color: #7a7a7a;
+    text-align: center;
+  }
+  
+  
+  /* HEADER/FOOTER */
+  header, footer {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+    
+    
+    
+   
+  }
+  #h1 {
+    font-size: 2em;
+    -webkit-text-stroke-width: 1px ;
+    -webkit-text-stroke-color: rgb(0, 0, 0) ;
+    font-weight: 900;
+  }
+  
+  
+  /* FORM ELEMENTS */
+  input {
+    border-radius: .5em;
+    padding: .5em;
+    width: 150px;
+    background: #FCFCFC;
+    border: 1px solid;
+  }
+
+  
+  
+  /* TABLE */
+  table {
+    background-color: #63c1f8;
+    width: 100%;
+    text-align: left;
+  }
+  table, th, td {
+   
+    
+    border: 1px solid black;
+    border-collapse: collapse;
+    height: 2em;
+  }
+  th, td {
+    padding: .4em;
+    min-width: 3em;
+  }
+  thead {
+    
+    color: #fcfcfc;
+  }
+  tbody tr:nth-child(odd){ 
+background-color: #fffeb9;
+   font-family: sans-serif; 
+   color: black;
+  }
+  tbody tr:nth-child(even){
+background-color: #bfe7ff;
+    font-family: sans-serif;
+    color: black;
+  }
+.icon{
+    position:relative top left;
+}
+
+
+h4 {
+    text-align: right;
+    -webkit-text-stroke-width: 1px ;
+    -webkit-text-stroke-color: rgb(0, 0, 0) ;
+}
+
+.delete_button{
+    background-color: rgb(255, 114, 114);
+}
+.delete_button:hover {
+    box-shadow: -3px 2px red;
+}
+.ready{
+    background-color: rgb(171, 255, 171);
+}
+.not_ready{
+    background-color: rgb(255, 114, 114);
+}
+#headerText{
+    text-align: right;
+    width: max-content;
+}
+#ready:hover{
+    box-shadow: -3px 2px green;
+}
+#not_ready:hover{
+    box-shadow: -3px 2px red;
+}
+
+#ready{
+    box-shadow: -4px 3px rgb(197, 252, 197);
+}
+#not_ready{
+    box-shadow: -4px 3px rgb(255, 162, 162);
+}
+#filler{
+    width: 200px;
+}

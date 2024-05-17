@@ -83,9 +83,9 @@ if (koala.ready_for_transfer === true){
       <td>${koala.name}</td>  
       <td>${koala.age}</td>
       <td>${koala.favorite_color}</td>
-      <td>${koala.ready_for_transfer}</td>
+      <td class="ready">✅       ${koala.ready_for_transfer}</td>
       <td>${koala.notes}</td>
-      <td><button onClick="markReady(${koala.id},false)">Not Ready Anymore</button></td>
+      <td>✅   <button id="not_ready" class="not_ready" onClick="markReady(${koala.id},false)">Not Ready Anymore</button> ✅</td>
       <td><button class="delete_button" onClick="deleteKoala(${koala.id})">DELETE🗑️</button></td>
       
         
@@ -98,9 +98,9 @@ else {
       <td>${koala.name}</td>  
       <td>${koala.age}</td>
       <td>${koala.favorite_color}</td>
-      <td>${koala.ready_for_transfer}</td>
+      <td class="not_ready">❌        ${koala.ready_for_transfer}</td>
       <td>${koala.notes}</td>
-      <td><button onClick="markReady(${koala.id},true)">Ready for Transfer</button></td>
+      <td>❌   <button id="ready" class="ready" onClick="markReady(${koala.id},true)">Ready for Transfer</button> ❌ </td>
       <td><button class="delete_button" onClick="deleteKoala(${koala.id})">DELETE🗑️</button></td>
       
         
