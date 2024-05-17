@@ -3,25 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Koalla Holla</title>
-    <link rel="stylesheet" href="views/styles.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script defer src="scripts/client.js" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <img src="images/icon.png" class="icon" />
-      <h1>Koala Holla</h1>
-      <h3>1976 Llama Comma Drive</h2>
-      <h3>Walla Walla, WA</h2>
+     <img src="images/icon.png" class="icon" width="15%"/><br>
+     
+     <h4><span id="h1">Koala Holla</span><br>
+      1976 Llama Comma Drive<br>
+      Walla Walla, WA</h4>
+      
     </header>
     <section id="addKoala">
       <h2>Add Koala</h2>
-      <input type="text" id="nameIn" value="" placeholder="Name">
-      <input type="text" id="ageIn" value="" placeholder="Age">
-      <input type="text" id="colorIn" value="" placeholder="Favorite Color">
-      <input type="text" id="readyForTransferIn" value="" placeholder="Transfer">
-      <input type="text" id="notesIn" value="" placeholder="Notes">
-      <button onClick="submitKoala(event)" type="button" id="addButton">Add Koala</button>
+      <input type="text" id="nameIn" placeholder="Name  *" required>
+      <input type="text" id="ageIn"  placeholder="Age  *" required>
+      <input type="text" id="colorIn"  placeholder="Favorite Color  *" required>
+      <input type="text" id="readyForTransferIn"  placeholder="Transfer  *" required>
+      <input type="text" id="notesIn" placeholder="Notes  *" required>
+      <button onClick="submitKoala(event)" type="button" id="addButton">Add Koala 🐨</button>
+      <div>
+        <span class="filler" id="req"> * </span> = Required field
+      </div>
     </section>
     <section>
       <h2>All Koalas</h2>
@@ -42,4 +47,9 @@
       </table>
     </section>
   </body>
+  <footer>
+    <div>
+      Koalas
+    </div>
+  </footer>
 </html>
