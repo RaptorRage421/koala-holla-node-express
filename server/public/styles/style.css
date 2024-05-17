@@ -170,9 +170,13 @@ h4 {
 }
 
 #ready{
+  
     box-shadow: -4px 3px rgb(197, 252, 197);
 }
 #not_ready{
+  border-radius: 1em;
+    border-top-right-radius: .4em;
+    border-bottom-left-radius: .4em;
     box-shadow: -4px 3px rgb(255, 162, 162);
 }
 #filler{
