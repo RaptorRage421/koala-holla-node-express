@@ -71,11 +71,14 @@ body {
   
   /* FORM ELEMENTS */
   input {
-    border-radius: .5em;
+    border-top-left-radius: 0;
+    border-radius: 1em;
     padding: .5em;
-    width: 150px;
+    width: 175px;
     background: #FCFCFC;
     border: 1px solid;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   
@@ -128,6 +131,7 @@ h4 {
 .delete_button:hover {
     box-shadow: -3px 2px red;
 }
+
 .ready{
     background-color: rgb(171, 255, 171);
 }
@@ -153,4 +157,11 @@ h4 {
 }
 #filler{
     width: 200px;
+}
+
+*:required {
+    background-color: rgb(255, 215, 205);
+  }
+#req{
+    color: red;
 }
