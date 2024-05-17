@@ -84,7 +84,7 @@ koalaRouter.put('/ready/:id', (req, res)=>{
 
 koalaRouter.put('/name/:id', (req, res)=>{
     let koalaId = req.params.id
-    let incName = req.body.age
+    let incName = req.body.name
     console.log("req.body", req.body)
 console.log("name." , incName)
 console.log("koala id", koalaId)
