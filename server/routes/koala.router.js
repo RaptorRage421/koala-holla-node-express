@@ -81,8 +81,8 @@ console.log("koala id", koalaId)
             res.send(500)
         })
 })
-koalaRouter.put('/favoritecolor/:id', (req,res) => {
-        letkoalaId = req.params.id
+koalaRouter.put('/color/:id', (req,res) => {
+        let koalaId = req.params.id
         let incColor = req.body.favorite_color
         let queryText = ''
         queryText = `

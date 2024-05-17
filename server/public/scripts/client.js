@@ -89,7 +89,7 @@ if (koala.ready_for_transfer === true){
       <tr>
       <td>${koala.name}</td>  
       <td>${koala.age}</td>
-      <td>${koala.favorite_color}</td>
+      <td>${koala.favorite_color}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editColor(${koala.id},document.getElementById('colorIn').value)">Edit</button></td>
       <td class="ready">✅&nbsp;&nbsp;&nbsp;  Ready! &nbsp;&nbsp;&nbsp; ✅</td>
       <td>${koala.notes}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editNotes(${koala.id},document.getElementById('notesIn').value)">Edit</button></td>
       <td><button id="not_ready" class="not_ready" onClick="markReady(${koala.id},false)">Not Ready</button> </td>
@@ -104,7 +104,7 @@ else {
       <tr>
       <td>${koala.name}</td>  
       <td>${koala.age}</td>
-      <td>${koala.favorite_color}</td>
+      <td>${koala.favorite_color}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editColor(${koala.id},document.getElementById('colorIn').value)">Edit</button></td>
       <td class="not_ready">❌ NOT Ready ❌</td>
       <td>${koala.notes}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editNotes(${koala.id},document.getElementById('notesIn').value)">Edit</button></td>
       <td><button id="ready" class="ready" onClick="markReady(${koala.id},true)">Ready for Transfer</button></td>
