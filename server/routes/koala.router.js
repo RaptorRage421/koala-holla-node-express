@@ -93,12 +93,12 @@ console.log("koala id", koalaId)
 
     
         queryText = `
-        UPDATE "koala" SET "notes"=$1
-        WHERE "id"=$2;
+        UPDATE "koala" SET "notes"=$2
+        WHERE "id"=$1;
         `;
     
     
-    pool.query(queryText, [incNotes,koalaId])
+    pool.query(queryText, [koalaId,incNotes])
         .then(()=>{
             res.sendStatus(204)
         })
