@@ -1,10 +1,15 @@
 button {
-    border-radius: .5em;
-    padding: 3px;
-    box-shadow:-5px 2px purple;
+    border-radius: 1em;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: .5em;
+    box-shadow:-5px 2px #63c1f8;
+    padding-top: .1em;
+    padding-bottom: 8px;
 }
 button:hover {
     box-shadow: -3px 2px goldenrod;
+    background-color: rgb(254, 255, 185);
 }
 /* GLOBAL TYPOGRAPHY */
 body {
@@ -26,7 +31,7 @@ body {
     display: flex;
     flex-direction: column;
   header {
-   background-color: #574e4e;
+   background-image: linear-gradient(to right, rgb(6, 156, 243), lightblue);
     height: 2em;
    justify-content: space-between;
     
@@ -34,7 +39,7 @@ body {
     font-size: 25px;
   
     font-weight: 100;
-    color: rgb(211, 153, 250)  ;
+    color: rgb(153, 6, 250)  ;
   }
   main {
     display: flexbox;
@@ -55,6 +60,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: fantasy;
   }
     
     
@@ -63,8 +69,8 @@ body {
   }
   #h1 {
     font-size: 2em;
-    -webkit-text-stroke-width: 1px ;
-    -webkit-text-stroke-color: rgb(0, 0, 0) ;
+    -webkit-text-stroke-width: 0px ;
+    -webkit-text-stroke-color: rgb(53, 114, 245) ;
     font-weight: 900;
   }
   
@@ -80,12 +86,19 @@ body {
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+  input:hover {
+    background-color: rgb(254, 255, 220);
+  }
+  input:focus {
+    background-color: rgb(220, 255, 220);
+  }
+
 
   
   
   /* TABLE */
   table {
-    background-color: #63c1f8;
+   
     width: 100%;
     text-align: left;
   }
@@ -101,7 +114,7 @@ body {
     min-width: 3em;
   }
   thead {
-    
+    background-image: linear-gradient(to top,rgb(116, 116, 255), lightblue);
     color: #fcfcfc;
   }
   tbody tr:nth-child(odd){ 
@@ -121,8 +134,8 @@ background-color: #bfe7ff;
 
 h4 {
     text-align: right;
-    -webkit-text-stroke-width: 1px ;
-    -webkit-text-stroke-color: rgb(0, 0, 0) ;
+    -webkit-text-stroke-width: 0 ;
+    -webkit-text-stroke-color: rgb(12, 27, 36) ;
 }
 
 .delete_button{
@@ -134,9 +147,12 @@ h4 {
 
 .ready{
     background-color: rgb(171, 255, 171);
+    text-align: center;
 }
 .not_ready{
     background-color: rgb(255, 114, 114);
+    text-align: center;
+    justify-content: space-evenly;
 }
 #headerText{
     text-align: right;
