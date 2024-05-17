@@ -181,3 +181,6 @@ h4 {
 #req{
     color: red;
 }
+.editButton{
+    align-items: stretch;
+}
