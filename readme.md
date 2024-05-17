@@ -1,53 +1,45 @@
-This must stop:
----------------
-![Think of the Koalas!](https://i.makeagif.com/media/8-22-2014/GO_DT4.gif)
+# Koala Holla
 
+## Description
 
-Koala Holla
-===========
+_Duration:_ 2 Day Group Project
 
-Our client, Koala Holla (1976 Llama Comma Drive, Walla Walla WA) is a non-profit dedicated to the ethical transitioning of koalas from the outdoors (whereupon they may be rained) to urban areas where roofs exist. Your team has been hired to build a web app to handle their terrarium residents.
+This is a practice in building a database via PostgreSQL and utilizing it to:
+- Render to the DOM via GET requests
+- Allow user input to be added to the database and re-rendered
+- Allow user input to modify data in the database via PUT or DELETE requests
 
-Technologies
-------------
-* Node
-* Express
-* SQL
+We have also added some extra features:
+- Can edit any information for koalas in the database by filling out the corresponding input form and clicking the edit button within the table
+- Koalas can be be toggled "ready for transfer" and "not ready for transfer" via the same button, indicated by both text and styling on the button
+- Interactive styling via CSS
 
-Client needs
-------------
-Koala Holla has provided a table of their current residents:
+## Screen Shot
 
-| id | name    | favorite_color | age | ready_to_transer | notes                            |
-|----|---------|--------|-----|------------------|----------------------------------|
-| 1  | Scotty  | Red      | 4   | Y                | Born in Guatemala                |
-| 2  | Jean    | Green      | 5   | Y                | Allergic to lots of lava         |
-| 3  | Ororo   | Yellow      | 7   | N                | Loves listening to Paula (Abdul) |
-| 4  | K'Leaf   | Purple      | 15  | N                | Never refuses a treat.                  |
-| 5  | Charlie | Orange      | 9   | Y                | Favorite band is Nirvana         |
-| 6  | Betsy   | Blue      | 4   | Y                | Has a pet iguana                 |
+![screenshot](./Screenshot%202024-05-17%20at%2010.42.52 AM.png)
 
-They need the ability to add a Koala to the database. Make a form with the appropriate info. Save the koala in the database. Think about what data types you'll be needing for your table columns.  
+### Prerequisites
+- [PostgreSQL](https://www.postgresql.org/download/)
+- [Postico](https://eggerapps.at/postico/v1.php) (_or another way to interact with database for setup_)
+- [Node.js](https://nodejs.org/en/download/package-manager/current)
+- [Express](https://www.npmjs.com/package/express) (install via npm i)
+- [node-postgres](https://www.npmjs.com/package/pg) (install via npm i)
 
-They need the ability for mark a Koala ready for transfer. Each koala in your UI needs a button in that reads 'Ready for Transfer'. When the user clicks on the button, it should update the database for the specific Koala. The 'Ready for Transfer' button should only appear for Koalas that haven't yet been marked ready for transfer.
+## Installation
 
-Delivery
---------
-Upon completion of the project you'll need to provide not only the source (via GitHub url), but also instructions on how the database table should be set up. This can be in a simple `database.sql` file in the repo.
+1. Create a database named `koala_holla`
+2. The queries within `database.sql` will be all that is needed to create the necessary tables and populate the needed data to render the koalas to the DOM. This was built using PostgreSQL and Postico to run the queries.
+3. Open this repo up in an IDE and run `npm install` in the terminal
+4. Run `npm run server` 
+    - **Note** this project used [nodemon](https://www.npmjs.com/package/nodemon) for server management, but it is not a dependancy in the `package.json`. If not using nodemon you will need to change the `server` script to say `node server/server.js`
+5. Visit `localhost:5001` in your browser to interact with the app
 
-### STRETCH GOALS
+## Usage
 
-1. Ability to delete a specific Koala from the database.  
-2. Confirmation dialog before deleting (research SweetAlert).
-3. Ability to make koalas toggle between ready for transfer and NOT ready for transfer.
-4. Add form validation, additional styling and a README.md.
-5. Client side filtering with a text box
-6. Ability to edit other information (Name, Age, Notes) for existing Koalas in the db.
-
-
-
-### Sample Wireframe
---------
-Your final product may look something like this:
-
-![sample](sample.png)
+1. Vist `localhost:5001`
+2. All current koalas within the database will be rendered into the table below
+3. To add a koala to the database, input values into the forms above and hit the `add koala` button
+    - This will not send data unless all forms are filled
+4. If you would like to edit any current koala, input the new information into the corresponding form above and when ready hit the `edit` button where you would like the update to occur.
+5. If you would like to remove a koala from the database, hit the `delete` button
+6. If you would like to toggle that a koala is ready for transfer, click the button in the `Mark Ready` colum and you will see this change illustrated on screen
