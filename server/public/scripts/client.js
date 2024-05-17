@@ -87,8 +87,8 @@ function renderKoala(koalas) {
 if (koala.ready_for_transfer === true){
     koalaZoo.innerHTML += `
       <tr>
-      <td>${koala.name}</td>  
-      <td>${koala.age}</td>
+      <td>${koala.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editName(${koala.id},document.getElementById('nameIn').value)">Edit</button></td>  
+      <td>${koala.age}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editAge(${koala.id},document.getElementById('ageIn').value)">Edit</button></td>
       <td>${koala.favorite_color}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editColor(${koala.id},document.getElementById('colorIn').value)">Edit</button></td>
       <td class="ready">✅&nbsp;&nbsp;&nbsp;  Ready! &nbsp;&nbsp;&nbsp; ✅</td>
       <td>${koala.notes}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editNotes(${koala.id},document.getElementById('notesIn').value)">Edit</button></td>
@@ -102,8 +102,8 @@ if (koala.ready_for_transfer === true){
 else {
   koalaZoo.innerHTML += `
       <tr>
-      <td>${koala.name}</td>  
-      <td>${koala.age}</td>
+      <td>${koala.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editName(${koala.id},document.getElementById('nameIn').value)">Edit</button></td>  
+      <td>${koala.age}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editAge(${koala.id},document.getElementById('ageIn').value)">Edit</button></td>
       <td>${koala.favorite_color}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editColor(${koala.id},document.getElementById('colorIn').value)">Edit</button></td>
       <td class="not_ready">❌ NOT Ready ❌</td>
       <td>${koala.notes}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="editButton" onClick="editNotes(${koala.id},document.getElementById('notesIn').value)">Edit</button></td>
@@ -176,6 +176,49 @@ axios({
   alert('Something went wrong');
  });
  }
+
+ function editAge(koalaId, incAge){
+  if (incAge.length === 0){
+    return
+  }
+axios({
+  method: "PUT",
+  url: "/koalas/age/" + koalaId,
+  data: {age: incAge}
+})
+
+.then((response) => {
+  console.log('incoming age', incAge)
+  getKoalas()
+  document.getElementById('ageIn').value = ''
+ })
+ .catch((error) => {
+  console.log('Error', error);
+  alert('Something went wrong');
+ });
+ }
+
+ function editName(koalaId, incName){
+  if (incName.length === 0){
+    return
+  }
+axios({
+  method: "PUT",
+  url: "/koalas/name/" + koalaId,
+  data: {name: incName}
+})
+
+.then((response) => {
+  console.log('incoming name', incName)
+  getKoalas()
+  document.getElementById('nameIn').value = ''
+ })
+ .catch((error) => {
+  console.log('Error', error);
+  alert('Something went wrong');
+ });
+ }
+
 
 
 function deleteKoala(koalaId) {
