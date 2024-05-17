@@ -81,7 +81,22 @@ console.log("koala id", koalaId)
             res.send(500)
         })
 })
-
+koalaRouter.put('/favoritecolor/:id', (req,res) => {
+        letkoalaId = req.params.id
+        let incColor = req.body.favorite_color
+        let queryText = ''
+        queryText = `
+        UPDATE "koala" SET "favorite_color" = $2
+        WHERE "id"=$1;`
+pool.query(queryText, [koalaId, incColor])
+.then(()=>{
+    res.sendStatus(204)
+})
+.catch((err)=>{
+    console.log(`Error making query ${queryText}`, err)
+    res.send(500)
+})
+})
 
 koalaRouter.put('/notes/:id', (req, res)=>{
     let koalaId = req.params.id
