@@ -141,10 +141,11 @@ h4 {
 }
 
 .delete_button{
-    background-color: rgb(255, 114, 114);
+    background-color: rgb(250, 249, 170);
 }
 .delete_button:hover {
     box-shadow: -3px 2px red;
+    background-color: rgb(255, 114, 114);
 }
 
 .ready{
